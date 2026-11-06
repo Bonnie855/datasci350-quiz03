@@ -186,3 +186,7 @@ git add commands.txt aws/
 git commit -m "Remove unnecessary root files"
 git push
 
+git rm --ignore-unmatch -- results.txt fingerprint.txt
+git add commands.txt aws/
+git commit -m "Remove unnecessary root files"
+git push
