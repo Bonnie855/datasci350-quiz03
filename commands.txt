@@ -3,8 +3,12 @@ cd datasci350-quiz03
 touch commands.txt
 
 Activity 1: 
+
 ollama pull granite4:350m
+# download granite4:350m
+
 ollama show granite4:350m
+# show model
 
 Output:
 Model
@@ -124,4 +128,53 @@ Because the response reached max_toke so was truncated and left an incomplete js
 
 git add ollama/ commands.txt
 git commit -m "Add Python calls"
+git push
+
+
+Activity 3:
+
+chmod 400 /Users/bonnietan/Downloads/quiz03-key.pem
+
+ssh -i /Users/bonnietan/Downloads/quiz03-key.pem ubuntu@ec2-18-224-18-224.us-east-2.compute.amazonaws.com
+
+Remote shell prompt:
+ubuntu@ip-172-31-19-18:~$
+
+sudo apt update
+
+
+sudo apt install -y python3-pandas python3-matplotlib python3-seaborn
+
+cd datasci350-quiz03
+
+
+scp -i /Users/bonnietan/Downloads/quiz03-key.pem aws/traffic_analysis.py aws/website_traffic.txt ubuntu@ec2-18-224-18-224.us-east-2.compute.amazonaws.com:~/
+
+
+python3 traffic_analysis.py > results.txt
+
+
+cat /var/lib/cloud/data/instance-id >> results.txt
+
+sha256sum results.txt > fingerprint.txt
+
+scp -i /Users/bonnietan/Downloads/quiz03-key.pem ubuntu@ec2-18-224-18-224.us-east-2.compute.amazonaws.com:~/results.txt aws/
+
+scp -i /Users/bonnietan/Downloads/quiz03-key.pem ubuntu@ec2-18-224-18-224.us-east-2.compute.amazonaws.com:~/fingerprint.txt aws/
+
+scp -i /Users/bonnietan/Downloads/quiz03-key.pem ubuntu@ec2-18-224-18-224.us-east-2.compute.amazonaws.com:~/traffic_analysis.png aws/
+
+When an instant is stopped, but not terminated, you dont pay for compute charge, but pay for retaining EBS storage still. 
+
+AI：used chatgpt for task 1 calculate predicted model size from equations listed, task 2 for fixing my draft of the model file, task 5 for checking codes and explaining rebuilding, task 7 for explaining prompt_tokens, task 9 for checking if my instance page is set up correctly, task 10 for drafting chmod and ssh commands, task 12 for checking codes and providing the scp upload command, task 13 for explained where to run the commands and how they save results. 
+
+I ran all commands myself; no AI agent executed them.
+
+Example prompt: Example prompt: "I did this, is this good:
+MESSAGE user what is the weather in GA now?
+MESSAGE assistant Sports fans, I can't access live weather data, so I don't know the weather.
+Why do I have to run ollama create commentator -f ollama/Modelfile? I did not run this, is this okay?"
+
+git add .
+git commit -m "Add AWS analysis results"
 git push
