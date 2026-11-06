@@ -124,7 +124,7 @@ stop
 I'm sorry for any confusion but my knowledge is limited to sports topics.
 
 
-Because the response reached max_toke so was truncated and left an incomplete json which json.load() can't parse. 
+Because the response reached max_tokens so was truncated and left an incomplete json which json.loads() can't parse. 
 
 git add ollama/ commands.txt
 git commit -m "Add Python calls"
