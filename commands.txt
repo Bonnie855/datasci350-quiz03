@@ -166,7 +166,7 @@ scp -i /Users/bonnietan/Downloads/quiz03-key.pem ubuntu@ec2-18-224-18-224.us-eas
 
 When an instant is stopped, but not terminated, you dont pay for compute charge, but pay for retaining EBS storage still. 
 
-AI：used chatgpt for task 1 calculate predicted model size from equations listed, task 2 for fixing my draft of the model file, task 5 for checking codes and explaining rebuilding, task 7 for explaining prompt_tokens, task 9 for checking if my instance page is set up correctly, task 10 for drafting chmod and ssh commands, task 12 for checking codes and providing the scp upload command, task 13 for explained where to run the commands and how they save results. 
+AI：used chatgpt for task 1 calculate predicted model size from equations listed, task 2 for fixing my draft of the model file, task 5 for checking codes and explaining rebuilding, task 7 for explaining prompt_tokens, task 9 for checking if my instance page is set up correctly, task 10 for drafting chmod and ssh commands, task 12 for checking codes and providing the scp upload command, task 13 for explained where to run the commands and how they save results. And clean folders for unwanted files.
 
 I ran all commands myself; no AI agent executed them.
 
@@ -178,3 +178,11 @@ Why do I have to run ollama create commentator -f ollama/Modelfile? I did not ru
 git add .
 git commit -m "Add AWS analysis results"
 git push
+
+cd datasci350-quiz03
+
+git rm --ignore-unmatch -- results.txt fingerprint.txt .DS_Store
+git add commands.txt aws/
+git commit -m "Remove unnecessary root files"
+git push
+
